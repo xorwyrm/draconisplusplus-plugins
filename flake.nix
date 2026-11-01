@@ -36,36 +36,10 @@
           inherit system;
         };
 
-        dbusStatic = pkgs.pkgsStatic.dbus.overrideAttrs (old: let
-          filterAuditApparmor = builtins.filter (package: let
-            name = package.pname or "";
-          in
-            name != "audit" && name != "libapparmor");
-        in {
-          buildInputs = filterAuditApparmor (old.buildInputs or []);
-          propagatedBuildInputs = filterAuditApparmor (old.propagatedBuildInputs or []);
-          mesonFlags =
-            builtins.filter
-            (flag: !(lib.hasPrefix "-Dlibaudit" flag) && !(lib.hasPrefix "-Dapparmor" flag))
-            (old.mesonFlags or [])
-            ++ [
-              "-Dlibaudit=disabled"
-              "-Dapparmor=disabled"
-            ];
-          configureFlags =
-            builtins.filter
-            (flag: !(lib.hasPrefix "--enable-apparmor" flag) && !(lib.hasPrefix "--enable-libaudit" flag))
-            (old.configureFlags or [])
-            ++ [
-              "--disable-apparmor"
-              "--disable-libaudit"
-            ];
-        });
-
         pluginBuildInputsByName = {
           json_format = [];
           markdown_format = [];
-          now_playing = lib.optionals pkgs.stdenv.hostPlatform.isLinux [dbusStatic];
+          now_playing = [];
           weather = [pkgs.pkgsStatic.curl];
           yaml_format = [];
         };
