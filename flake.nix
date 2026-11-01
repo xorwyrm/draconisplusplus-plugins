@@ -163,7 +163,7 @@
         allPlugins = mkPluginRoot {};
         integrationCheck = name:
           draconisplusplus.lib.${system}.withPlugins {
-            package = draconisplusplus.packages.${system}.generic;
+            package = draconisplusplus.packages.${system}.default;
             pluginPackages = [self.packages.${system}.${name}];
             staticPlugins = ["all"];
           };
@@ -193,7 +193,7 @@
           // integrationChecks
           // {
             integration-all = draconisplusplus.lib.${system}.withPlugins {
-              package = draconisplusplus.packages.${system}.generic;
+              package = draconisplusplus.packages.${system}.default;
               pluginPackages = [allPlugins];
               staticPlugins = ["all"];
             };

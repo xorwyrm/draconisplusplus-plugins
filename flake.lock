@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784675650,
-        "narHash": "sha256-ZiFAPZuJjRn+keOa0yn4YH3YvSmL5U7FfI3OPvCBGyg=",
+        "lastModified": 1793561260,
+        "narHash": "sha256-CL9TykzynnKleOjQV0PSNGnr5AShfk1x3CcucSMRpPM=",
         "owner": "xorwyrm",
         "repo": "draconisplusplus-monorepo",
-        "rev": "032246ed1e484090315d7379aed94b457c669fc9",
+        "rev": "6e5162098395ed06e0629ea8a3fac35bdb1949fa",
         "type": "github"
       },
       "original": {
